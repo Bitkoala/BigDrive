@@ -1,17 +1,18 @@
-# BigDrive Music Controller 🎵🚗
+# 考拉音控 (Kaola Music Controller) 🎵🚗
 [English](#english-version) | [中文版](#中文版)
 
 ---
 
 ## 中文版
 
-**BigDrive Music Controller** 是一款专为驾驶分屏场景打造的极简 Android 音乐控制器。它通过系统底层的 `MediaSession` 协议接管当前正在播放的音频（支持网易云音乐、QQ音乐、Spotify等），将手机屏幕变为一个超大尺寸的“盲操”遥控器。
+**考拉音控 (Kaola Music Controller)** 是一款专为驾驶分屏场景打造的极简 Android 车机风格音乐控制器。它通过系统底层的 `MediaSession` 协议接管当前正在播放的音频（支持网易云音乐、QQ音乐、Spotify等），将手机屏幕变为一个极具设计感的超大尺寸遥控器。
 
 ### ✨ 核心特性
 
-- **极致盲操 (Blind Operation)**: 抛弃传统小巧的播放按钮，将屏幕直接划分为三大隐藏热区（左40%上一首，右40%下一首，中间20%播放/暂停），让你在颠簸的路况下也绝不会点错。
-- **沉浸式 UI**: 自动提取当前歌曲的高清封面，叠加极具质感的高斯模糊作为全屏背景。
-- **触觉反馈 (Haptic Feedback)**: 每次成功触发切歌或暂停时，伴随轻微的震动反馈，无需看屏幕即可确认操作。
+- **现代车机布局 (Modern Dashboard UI)**: 采用左侧高清正方形封面、右侧音乐信息与超大控制面板的黄金分割布局，美观且实用。
+- **超大控制按键 (Large Touch Targets)**: 摒弃音乐 App 原生的微小按钮，提供超大尺寸的上一曲、播放/暂停、下一曲实体按键，确保在颠簸路况下也能精准盲按。
+- **沉浸式视觉 (Immersive Visuals)**: 自动提取当前歌曲的高清封面，叠加极具质感的高斯模糊作为全屏背景，配合发光的拟物化 Logo 图标，充满驾驶沉浸感。
+- **触觉反馈与高精度进度条**: 每次成功触发切歌或暂停时，伴随轻微的震动反馈；支持随时拖拽的高精度进度条让您轻松掌控播放。
 - **完美的车机分屏支持**: 为 Android 11+ 的多窗口模式深度优化，拖动分屏比例时绝不闪退或变形，屏幕始终保持常亮。
 
 ### 🚀 如何构建与安装
@@ -39,13 +40,14 @@
 
 ## English Version
 
-**BigDrive Music Controller** is a minimalist Android music controller designed specifically for split-screen driving scenarios. It takes over the currently playing audio (supporting Spotify, Apple Music, etc.) via the system's `MediaSession` protocol, turning your phone screen into a massive "blind-operation" remote control.
+**Kaola Music Controller (考拉音控)** is a minimalist Android music controller designed specifically for split-screen driving scenarios. It takes over the currently playing audio (supporting Spotify, Apple Music, etc.) via the system's `MediaSession` protocol, turning your phone screen into a massive, modern remote control.
 
 ### ✨ Key Features
 
-- **Ultimate Blind Operation**: Abandons traditional tiny playback buttons. The screen is divided into three large, invisible hot zones (Left 40% for Previous, Right 40% for Next, Center 20% for Play/Pause), ensuring you never miss a tap on a bumpy road.
-- **Immersive UI**: Automatically extracts the current song's high-res album art, applying a premium Gaussian blur as the full-screen background.
-- **Haptic Feedback**: Accompanies every successful track skip or pause with a subtle vibration, providing confirmation without taking your eyes off the road.
+- **Modern Dashboard UI**: Features a golden-ratio layout with high-res square album art on the left, and track info with a massive control panel on the right.
+- **Large Touch Targets**: Abandons the tiny playback buttons of native music apps. Provides oversized Previous, Play/Pause, and Next buttons to ensure accurate taps even on bumpy roads.
+- **Immersive Visuals**: Automatically extracts the current song's high-res album art, applying a premium Gaussian blur as the full-screen background.
+- **Haptic Feedback & Seekable Progress**: Accompanies every successful track skip or pause with a subtle vibration. The highly accurate seekbar allows easy playback control.
 - **Perfect Split-Screen Support**: Deeply optimized for Android 11+ multi-window mode. Resizing the split-screen ratio will never cause crashes or distortion. The screen stays awake during the ride.
 
 ### 🚀 How to Build & Install
@@ -66,5 +68,5 @@ No need to install a massive local environment. You can push the code to GitHub 
 
 1. **Initial Authorization**: Upon the first launch, follow the on-screen prompt to navigate to system settings and grant **"Notification Access"**. This is strictly required to intercept media controls.
 2. **Connect Player**: Open your preferred music player (e.g., Spotify) and start playing a track.
-3. **Return to BigDrive**: The background will automatically transform into a blurred version of the album art.
+3. **Return to Kaola Music**: The background will automatically transform into a blurred version of the album art.
 4. **Split-Screen Mode**: Enter split-screen mode with your navigation app. You can now safely and conveniently control your music while driving.

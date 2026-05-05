@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BigDrive Controller</string>
+    <string name="app_name">考拉音控</string>
     <string name="permission_required">需要通知读取权限来接管音乐控制</string>
     <string name="grant_permission">去授权</string>
 </resources>

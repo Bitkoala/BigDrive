@@ -7,7 +7,6 @@
     android:background="@color/black"
     tools:context=".MainActivity">
 
-    <!-- Blurred Background Layer -->
     <ImageView
         android:id="@+id/ivBackgroundBlur"
         android:layout_width="0dp"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Dark overlay to ensure text is readable -->
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -28,15 +26,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Left Guideline to divide the screen (45% for Album Art, 55% for Controls) -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineCenter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.4" />
 
-    <!-- Album Art -->
     <ImageView
         android:id="@+id/ivAlbumArt"
         android:layout_width="0dp"
@@ -47,9 +43,9 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="240dp" />
 
-    <!-- Right Controls Container -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -59,7 +55,6 @@
         app:layout_constraintStart_toEndOf="@+id/guidelineCenter"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Title -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
@@ -68,7 +63,9 @@
             android:singleLine="true"
             android:text="未知歌曲"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMaxTextSize="28sp"
+            app:autoSizeMinTextSize="16sp"
             android:textStyle="bold"
             android:marqueeRepeatLimit="marquee_forever"
             app:layout_constraintBottom_toTopOf="@+id/tvArtist"
@@ -77,7 +74,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread" />
 
-        <!-- Artist -->
         <TextView
             android:id="@+id/tvArtist"
             android:layout_width="0dp"
@@ -92,7 +88,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-        <!-- SeekBar (Progress) -->
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="0dp"
@@ -106,7 +101,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvArtist" />
 
-        <!-- Time Text Container -->
         <LinearLayout
             android:id="@+id/layoutTime"
             android:layout_width="0dp"
@@ -139,54 +133,62 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Buttons Row -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutButtons"
             android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_max="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layoutTime">
 
-            <!-- Previous -->
             <ImageButton
                 android:id="@+id/btnPrevious"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.25"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="上一首"
-                android:src="@drawable/ic_skip_previous" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_skip_previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPlayPause"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Play/Pause -->
             <ImageButton
                 android:id="@+id/btnPlayPause"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"
-                android:scaleType="fitCenter"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.35"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="播放/暂停"
-                android:src="@drawable/ic_pause" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_pause"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnNext"
+                app:layout_constraintStart_toEndOf="@+id/btnPrevious"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Next -->
             <ImageButton
                 android:id="@+id/btnNext"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.25"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="下一首"
-                android:src="@drawable/ic_skip_next" />
-        </LinearLayout>
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_skip_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnPlayPause"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Permission Request Overlay (Shown if no permission) -->
     <LinearLayout
         android:id="@+id/layoutPermission"
         android:layout_width="wrap_content"

@@ -24,6 +24,16 @@ class MusicControllerService : NotificationListenerService() {
             val bitmap = metadata?.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART)
                 ?: metadata?.getBitmap(MediaMetadata.METADATA_KEY_ART)
             MediaRepository.updateAlbumArt(bitmap)
+            
+            val title = metadata?.getString(MediaMetadata.METADATA_KEY_TITLE)
+                ?: metadata?.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE)
+                ?: "未知歌曲"
+            val artist = metadata?.getString(MediaMetadata.METADATA_KEY_ARTIST)
+                ?: metadata?.getString(MediaMetadata.METADATA_KEY_ALBUM_ARTIST)
+                ?: "未知歌手"
+            val duration = metadata?.getLong(MediaMetadata.METADATA_KEY_DURATION) ?: 0L
+            
+            MediaRepository.updateMetadata(title, artist, duration)
         }
 
         override fun onPlaybackStateChanged(state: PlaybackState?) {

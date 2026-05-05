@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允许创建 Release
 
     steps:
     - name: Checkout code
@@ -22,13 +24,34 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
       with:
-        gradle-version: '8.5' # 指定 Gradle 版本，无需本地生成 gradlew
+        gradle-version: '8.5'
+
+    - name: Calculate Version
+      id: calc_version
+      run: |
+        RUN_NUM=${{ github.run_number }}
+        MAJOR=$(( (9 + RUN_NUM) / 10 ))
+        MINOR=$(( (9 + RUN_NUM) % 10 ))
+        VERSION="$MAJOR.$MINOR"
+        echo "VERSION_NAME=$VERSION" >> $GITHUB_ENV
+        echo "VERSION_CODE=$RUN_NUM" >> $GITHUB_ENV
 
     - name: Build Debug APK
       run: gradle assembleDebug
+      env:
+        VERSION_CODE: ${{ env.VERSION_CODE }}
+        VERSION_NAME: ${{ env.VERSION_NAME }}
 
-    - name: Upload APK artifact
-      uses: actions/upload-artifact@v4
+    - name: Rename APK
+      run: mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/BigDriveController-v${{ env.VERSION_NAME }}.apk
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: BigDrive-Controller-Debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        tag_name: v${{ env.VERSION_NAME }}
+        name: Release v${{ env.VERSION_NAME }}
+        files: app/build/outputs/apk/debug/BigDriveController-v${{ env.VERSION_NAME }}.apk
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

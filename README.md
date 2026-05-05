@@ -36,6 +36,12 @@
 3. **返回本应用**: 此时背景会自动变为歌曲封面的模糊版。
 4. **分屏使用**: 将本应用与导航软件上下/左右分屏，即可在驾驶时安全、便捷地控制音乐。
 
+### 📅 v3.x 更新计划 (Roadmap)
+- **真·沉浸式刘海屏适配**: 突破系统防遮挡保护机制，配置 `windowLayoutInDisplayCutoutMode`，彻底消除因手机挖孔/刘海屏导致的顶部状态栏黑条，实现 100% 满屏无边框模糊背景。
+- **智能歌词滚动渲染**: 
+  - **独立歌词源**: 通过网络开源 API 根据“歌曲名+歌手”自动匹配并下载 `.lrc` 歌词（打破原生 MediaSession 无法获取第三方音乐 App 完整歌词的限制）。
+  - **定制化渲染动效**: 开发自定义高性能 `LyricView`（Canvas 重绘绘制），随着音乐进度条的时间戳动态滚动，实现酷狗/网易云级别的单行高亮与极度丝滑的滚动体验。
+
 ---
 
 ## English Version
@@ -70,3 +76,9 @@ No need to install a massive local environment. You can push the code to GitHub 
 2. **Connect Player**: Open your preferred music player (e.g., Spotify) and start playing a track.
 3. **Return to Kaola Music**: The background will automatically transform into a blurred version of the album art.
 4. **Split-Screen Mode**: Enter split-screen mode with your navigation app. You can now safely and conveniently control your music while driving.
+
+### 📅 v3.x Roadmap
+- **True Immersive Display**: Configure `windowLayoutInDisplayCutoutMode` to bypass system notch protection, completely eliminating the top black status bar caused by camera cutouts to achieve a 100% edge-to-edge seamless background.
+- **Smart Scrolling Lyrics**:
+  - **Independent Lyric Sources**: Fetch `.lrc` lyric data via open-source network APIs based on track and artist names (overcoming the limitation of the native MediaSession protocol which cannot extract full lyrics from third-party music apps).
+  - **Custom Rendering Effects**: Develop a high-performance custom `LyricView` (Canvas rendering) synchronized with the playback progress timestamp to achieve silky smooth lyric scrolling and active-line highlighting comparable to commercial music players.
